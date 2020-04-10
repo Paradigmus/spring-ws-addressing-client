@@ -6,6 +6,7 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 @Configuration
 public class SoapClientConfig {
+    private static final String DESTINATION_URL = "http://localhost:8080/ws/beers";
 
     @Bean
     public Jaxb2Marshaller marshaller() {
@@ -17,7 +18,7 @@ public class SoapClientConfig {
     @Bean
     public BeerClient beerClient(Jaxb2Marshaller marshaller) {
         BeerClient client = new BeerClient();
-        client.setDefaultUri("http://localhost:8080/ws/beers");
+        client.setDefaultUri(DESTINATION_URL);
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;
