@@ -2,6 +2,7 @@ package com.memorynotfound.client;
 
 import com.memorynotfound.beer.*;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
+import org.springframework.ws.client.support.interceptor.ClientInterceptor;
 import org.springframework.ws.soap.addressing.client.ActionCallback;
 import org.springframework.ws.soap.addressing.core.EndpointReference;
 
@@ -27,6 +28,7 @@ public class BeerClient extends WebServiceGatewaySupport {
         callback.setFaultTo(new EndpointReference(
                 new URI(faultTo)));
 
+        getWebServiceTemplate().setInterceptors(new ClientInterceptor[]{new AddHttpHeaderInterceptor()});
         getWebServiceTemplate().marshalSendAndReceive(request, callback);
     }
 }
