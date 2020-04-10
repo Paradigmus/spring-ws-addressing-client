@@ -1,0 +1,1 @@
+# spring-ws-addressing-client
