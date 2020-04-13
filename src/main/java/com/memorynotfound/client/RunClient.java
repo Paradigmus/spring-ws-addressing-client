@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 public class RunClient {
 
     public static void main(String[] args) throws URISyntaxException {
+        System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SoapClientConfig.class);
         BeerClient client = context.getBean(BeerClient.class);
 
